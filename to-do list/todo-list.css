@@ -1,0 +1,46 @@
+.task-input, .date-input{
+    height: 40px;
+    font-size: 15px;
+}
+
+.addTask{
+    background-color: rgb(3, 147, 3);
+    color: white;
+    border: none;
+    height: 42px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.addTask:hover, .deleteTask:hover{
+    opacity: 0.8;
+}
+
+.addTask:active, .deleteTask:active{
+    opacity: 0.5;
+}
+
+.todoTask,.dueDate{
+    padding: 10px;
+    font-size: 20px;
+}   
+
+.deleteTask{
+    background-color: rgb(160, 4, 4);
+    color: white;
+    border: none;
+    height: 30px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.todo-grid, .taskDisplay{
+    display: grid;
+    grid-template-columns: 200px 120px 50px 80px;
+    gap: 5px;
+    align-items: center;
+}
+
+.check{
+    text-decoration: line-through;
+}

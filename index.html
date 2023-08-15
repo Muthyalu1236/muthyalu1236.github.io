@@ -1,229 +1,77 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Tic-Tac-Toe</title>
+        <title>Projects</title>
+
         <style>
-
-            .sidebar{
-                position: fixed;
-                top: 50px;
-            }
-
-            .avatar{
-                font-size: 50px;
-                margin-top: 20px;
-                cursor: pointer;
-            }
-
-            .main{
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 50px;
-            }
-
-            .playerChoice{
-                display: flex;
-                gap: 50px;
-            }
-
-            .instruction{
-                width: 500px;
-                font-size: 30px;
-            }
-
-            .next{
-                display: none;
-                background-color: whitesmoke;
-                height: 50px;
-                width: 100px;
-                font-size: larger;
-            }
-
-            .game-container{
-                display: none;
-            }
-
-            .game{
-                display: flex;
-                flex-direction: column;
-                gap: 30px;
-                justify-content: center;
-                align-items: center;
-            }
-
-            p{
-                font-size: 60px;
-                margin: 0;
-            }
-
             .container{
-                display: grid;
-                grid-template-columns: 100px 100px 100px;
-                gap: 10px;
-                margin: 0;
-            }
-
-            .smallcontainer{
-                position: static;
-                background-color: aqua;
-                height: 100px;
-                width: 100px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 50px;
                 text-align: center;
-                box-shadow: 10px 10px 10px gray;
-                font-size: 60px;
             }
 
-            .smallcontainer:hover{
-                opacity: 0.8;
+            .projects{
+                display: grid;
+                grid-template-columns: 200px 200px;
+                gap: 50px;
+                font-size: larger;
+                font-weight: 700;
             }
 
-            .reset{
-                height: 40px;
-                width: 100px;
-                cursor: pointer;
-                background-color: rgb(254, 90, 90);
-                box-shadow: -10px 5px 10px rgb(99, 99, 99);
-                margin: 0;
+            .tic-tac-toe, .rock-paper-scissors, .to-do-list, .calculator{
+                height: 150px;
+                width: 150px;
+                text-align: center;
             }
 
-            .reset:active{
-                box-shadow: none;
-                margin-left: -10px;
+            a{
+                text-decoration: none;
+                color: black;
             }
 
-            .nopointer{
-                pointer-events: none;
+            img{
+                width: 100%;
+                border-radius: 5px;
             }
-
         </style>
     </head>
 
     <body>
 
-        <sidebar class="sidebar">
-            <div class="avatar">😎</div>
-            <div class="avatar">😁</div>
-            <div class="avatar">😘</div>
-            <div class="avatar">🤡</div>
-            <div class="avatar">💀</div>
-            <div class="avatar">😈</div>
-        </sidebar>
+        <div class="container">
+            <h1>Projects and games created using HTML, CSS, JavaScript</h1>
 
-        <div class="main">
-            <div class="playerChoice">
-                <h1>Player 1: <span class="player"></span></h1>
-                <h1>Player 2: <span class="player"></span></h1>
-            </div>
-
-            <p class="instruction">Choose avatar from the given list !!</p>
-
-            <button class="next" onclick="nextClick()">Next</button>
+            <div class="projects">
+                <div class="tic-tac-toe">
+                    <a href="./tic-tac-toe/Tic-Tac-Toe" target="_blank">
+                        <img src="./images/tic-tac-toe.jpeg" alt="Tic-Tac-Toe">
+                        Tic-Tac-Toe
+                    </a>
+                </div>
+        
+                <div class="to-do-list">
+                    <a href="./to-do list/To-Do List" target="_blank">
+                        <img src="./images/todo.png" alt="To-Do-List">
+                        To-Do List
+                    </a>
+                </div>
     
-            <div class="game-container">
-                <div class="game">
-    
-                    <p class="name">Tic-Tac-Toe</p>
-                
-                    <div class="container">
-                        <div class="smallcontainer" data-position="[0,0]"></div>
-                        <div class="smallcontainer" data-position="[0,1]"></div>
-                        <div class="smallcontainer" data-position="[0,2]"></div>
-                        <div class="smallcontainer" data-position="[1,0]"></div>
-                        <div class="smallcontainer" data-position="[1,1]"></div>
-                        <div class="smallcontainer" data-position="[1,2]"></div>
-                        <div class="smallcontainer" data-position="[2,0]"></div>
-                        <div class="smallcontainer" data-position="[2,1]"></div>
-                        <div class="smallcontainer" data-position="[2,2]"></div>
-                    </div>
-            
-                    <button class="reset" onclick="reset()">Reset</button>
+                <div class="rock-paper-scissors">
+                    <a href="./rock-paper-scissors/Rock-Paper-Scissors" target="_blank">
+                        <img src="./images/rock-paper-scissors.png" alt="Rock-Paper-Scissors">
+                        Rock-Paper-Scissors
+                    </a>
+                </div>
+        
+                <div class="calculator">
+                    <a href="./calculator/Calculator" target="_blank">
+                        <img src="./images/calculator.png" alt="Calculator">
+                        Calculator
+                    </a>
                 </div>
             </div>
         </div>
-        
-        <script>
-            const moves =[[],[],[]];
-            let i=0;
-            const playerAvatar =[];
-            let playerOne , playerTwo;
-
-            const playerChoice = document.querySelectorAll('.player');
-
-            document.querySelectorAll('.avatar').forEach((char)=>{
-                char.addEventListener('click',()=>{
-                    if(i<2){
-                        const avatar = char.innerText
-                        playerChoice[i].innerText = avatar;
-                        playerAvatar.push(avatar)
-                        char.remove();
-                        i++;
-                    }
-                    if(i==2){
-                        document.querySelector('.instruction').style.display = 'none';
-                        document.querySelector('.sidebar').style.display = 'none';
-                        document.querySelector('.next').style.display = 'block';
-                    }
-                })
-            })
-
-            function nextClick(){
-                [playerOne,playerTwo] = playerAvatar;
-                console.log(playerOne,playerTwo);
-                document.querySelector('.next').style.display = 'none';
-                document.querySelector('.game-container').style.display = 'block';
-                playerMove = playerOne;
-            }
-
-            document.querySelectorAll('.smallcontainer').forEach((box) => {
-                box.addEventListener('click',() =>{
-                    box.innerHTML = playerMove;
-                    if(playerMove === playerOne){
-                        box.style.backgroundColor = 'red';
-                    } else{
-                        box.style.backgroundColor = 'yellow';
-                    }
-                    const [a,b] = JSON.parse(box.dataset.position);
-                    moves[a][b] = playerMove;
-                    box.classList.add('nopointer');
-
-                    if(
-                    moves[0][0] === playerMove && moves[0][1] === playerMove && moves[0][2] === playerMove || 
-                    moves[1][0] === playerMove && moves[1][1] === playerMove && moves[1][2] === playerMove ||
-                    moves[2][0] === playerMove && moves[2][1] === playerMove && moves[2][2] === playerMove ||
-                    moves[0][0] === playerMove && moves[1][0] === playerMove && moves[2][0] === playerMove ||
-                    moves[0][1] === playerMove && moves[1][1] === playerMove && moves[2][1] === playerMove ||
-                    moves[0][2] === playerMove && moves[1][2] === playerMove && moves[2][2] === playerMove ||
-                    moves[0][0] === playerMove && moves[1][1] === playerMove && moves[2][2] === playerMove ||
-                    moves[0][2] === playerMove && moves[1][1] === playerMove && moves[2][0] === playerMove
-                    ){
-                        alert(`${playerMove} won the game.`)
-                        document.querySelector('.container').classList.add('nopointer')
-                    }
-
-                    if(playerMove === playerOne){
-                        playerMove = playerTwo;
-                    } else{
-                        playerMove = playerOne;
-                }
-                })
-            })
-
-            function reset(){
-                document.querySelector('.container').classList.remove('nopointer');
-
-                document.querySelectorAll('.smallcontainer').forEach((box) => {
-                    box.innerText = '';
-                    box.style.backgroundColor = 'cyan';
-                    box.classList.remove('nopointer');
-                })
-
-                playerMove = playerOne;
-
-                moves.splice(0,3,[],[],[]);
-            }
-
-        </script>
     </body>
 </html>
